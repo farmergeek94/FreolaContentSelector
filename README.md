@@ -45,5 +45,3 @@ This project is a Kentico Xperience Admin UI module that adds a custom applicati
 
 ## Customization
 - Update the React components in `Client/src/FreolaContentItemSelector/` to change the UI or selection logic.
-- Modify `FreolaContentItemSelectorModule.cs` to adjust module registration or initialization logic.
-
