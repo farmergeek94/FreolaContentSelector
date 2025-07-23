@@ -27,7 +27,7 @@ This project is a Kentico Xperience Admin UI module that adds a custom applicati
    - The module is automatically registered via assembly attributes in `FreolaContentItemSelectorModule.cs`
 
 4. **Add the plugin to a custom Editor Configuration**
-   (rich-text-editor-configuration)[https://docs.kentico.com/documentation/developers-and-admins/configuration/rich-text-editor-configuration#customize-the-editor]
+   [rich-text-editor-configuration](https://docs.kentico.com/documentation/developers-and-admins/configuration/rich-text-editor-configuration#customize-the-editor)
    ````json
         {
             "pluginName": "@freola/content-item-selector/FreolaContentItemSelector",
