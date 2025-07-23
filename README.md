@@ -21,7 +21,7 @@ This project is a Kentico Xperience Admin UI module that adds a custom applicati
    - Build the project to generate the DLLs
 
 2. **Add to Kentico Xperience**
-   - Add the project to your kentico xperince solution and reference from the main project.
+   - Add the project to your kentico xperience solution and reference from the main project.
 
 3. **Register the Module**
    - The module is automatically registered via assembly attributes in `FreolaContentItemSelectorModule.cs`
