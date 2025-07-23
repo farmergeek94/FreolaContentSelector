@@ -45,3 +45,90 @@ This project is a Kentico Xperience Admin UI module that adds a custom applicati
 
 ## Customization
 - Update the React components in `Client/src/FreolaContentItemSelector/` to change the UI or selection logic.
+
+## Frontend usage
+  - Below is an example usage of querying the content items for display.
+  - Note: example only, the controller is not provided.
+  ````javascript
+var disclaimerRepo = (function (containerId) {
+    function repo(containerId) {
+        var self = this;
+        this.itemTemplate = function (idx, text) {
+            return '<div class="disclaimer" style="display: flex">' + idx + '&nbsp;' + text + '</div>';
+        }
+
+        this.queryItems = function () {
+            return document.querySelectorAll(`sup[data-type="DisclaimerType"]`);
+        }
+
+        this.queryByGuid = function (guid) {
+            return document.querySelectorAll(`sup[data-type="DisclaimerType"][data-guid="${guid}"]`);
+        }
+
+        this.fetchGuids = function (guids) {
+            return fetch("/disclaimer/get", {
+                method: "POST",
+                body: JSON.stringify(guids),
+                headers: {
+                    'Content-Type': 'application/json',
+                    'Accept': 'application/json',
+                }
+            }).then(x => x.json());
+        }
+
+        this.run = function () {
+            var guids = [];
+            var items = self.queryItems();
+            for (var item of items) {
+                guids.push(item.getAttribute("data-guid"));
+            }
+
+            self.fetchGuids(guids).then(x => {
+                var content = "";
+                var idx = 1;
+                for (var item of x) {
+                    ;
+                    var els = self.queryByGuid(item.guid);
+                    for (var el of els) {
+                        el.removeAttribute("data-guid")
+                        el.removeAttribute("data-type")
+                        el.innerHTML = idx;
+                    }
+                    content += self.itemTemplate(idx, item.text);
+                    idx++;
+                }
+
+                var elem = document.getElementById("disclaimer-view");
+                elem.innerHTML = content.replaceAll("~/", "/");
+            });
+
+            var manualDisclamers = true;
+            //are both disclaimers empty
+            if ($.trim($('#disclaimer-view-manual .blank-section').html()) === '') {
+                // The manual div is empty
+                manualDisclamers = false;
+            }
+
+            if (guids.length == 0) {
+
+                if (manualDisclamers) {
+                    var disclaimerContainer = document.getElementById("disclaimer-view");
+                    disclaimerContainer.classList.add('d-none');
+                }
+                else {
+                    var disclaimerContainer = document.getElementsByClassName("disclaimer-container");
+                    disclaimerContainer[0].classList.add('d-none');
+                }
+            }            
+        }
+
+        if (document.readyState === "loading") {
+            document.addEventListener("DOMContentLoaded", this.run);
+        } else {
+            this.run();
+        }
+    }
+    return new repo(containerId);
+
+})("disclaimer-view")
+  ```` 
