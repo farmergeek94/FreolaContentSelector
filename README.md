@@ -58,11 +58,11 @@ var disclaimerRepo = (function (containerId) {
         }
 
         this.queryItems = function () {
-            return document.querySelectorAll(`sup[data-type="DisclaimerType"]`);
+            return document.querySelectorAll(`sup[data-type="Disclaimer.Type"]`);
         }
 
         this.queryByGuid = function (guid) {
-            return document.querySelectorAll(`sup[data-type="DisclaimerType"][data-guid="${guid}"]`);
+            return document.querySelectorAll(`sup[data-type="Disclaimer.Type"][data-guid="${guid}"]`);
         }
 
         this.fetchGuids = function (guids) {
