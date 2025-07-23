@@ -104,7 +104,9 @@ var disclaimerRepo = (function (containerId) {
 
             var manualDisclamers = true;
             //are both disclaimers empty
-            if ($.trim($('#disclaimer-view-manual .blank-section').html()) === '') {
+            var element = document.querySelector('#disclaimer-view-manual .blank-section');
+            var html = element ? element.innerHTML : '';
+            if (html.trim() === '') {
                 // The manual div is empty
                 manualDisclamers = false;
             }
