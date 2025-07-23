@@ -20,14 +20,14 @@ This project is a Kentico Xperience Admin UI module that adds a custom applicati
    - Open the solution in Visual Studio
    - Build the project to generate the DLLs
 
-2. **Deploy to Kentico Xperience**
-   - Copy the built DLLs from `bin/Debug/net8.0/` to your Kentico Xperience site's `bin` folder
-   - Ensure the client-side files are deployed to the appropriate location for your admin UI
+2. **Add to Kentico Xperience**
+   - Add the project to your kentico xperince solution and reference from the main project.
 
 3. **Register the Module**
    - The module is automatically registered via assembly attributes in `FreolaContentItemSelectorModule.cs`
 
-4. **Add the plugin to the Editor Configuration**
+4. **Add the plugin to a custom Editor Configuration**
+   (rich-text-editor-configuration)[https://docs.kentico.com/documentation/developers-and-admins/configuration/rich-text-editor-configuration#customize-the-editor]
    ````json
         {
             "pluginName": "@freola/content-item-selector/FreolaContentItemSelector",
