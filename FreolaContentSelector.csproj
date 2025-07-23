@@ -1,0 +1,23 @@
+﻿<Project Sdk="Microsoft.NET.Sdk">
+  <PropertyGroup>
+    <TargetFramework Condition="'$(TargetFramework)' == ''">net8.0</TargetFramework>
+    <AdminOrgName>freola</AdminOrgName>
+  </PropertyGroup>
+  <ItemGroup>
+    <AdminClientPath Include="Client\dist\**">
+      <ProjectName>content-item-selector</ProjectName>
+    </AdminClientPath>
+  </ItemGroup>
+  <ItemGroup>
+    <Compile Remove="Client\node_modules\**" />
+    <EmbeddedResource Remove="Client\node_modules\**" />
+    <None Remove="Client\node_modules\**" />
+  </ItemGroup>
+  <ItemGroup>
+    <FrameworkReference Include="Microsoft.AspNetCore.App" />
+  </ItemGroup>
+  <ItemGroup>
+    <PackageReference Include="AspNetCore.Unobtrusive.Ajax" Version="3.0.0" />
+    <PackageReference Include="kentico.xperience.admin" Version="30.3.3" />
+  </ItemGroup>
+</Project>

@@ -1,0 +1,10 @@
+﻿.content-selector-item {
+    cursor: pointer;
+    padding: 10px;
+}
+    .content-selector-item p {
+        margin: 0
+    }
+    .content-selector-item:hover {
+        background: #eee;
+    }
